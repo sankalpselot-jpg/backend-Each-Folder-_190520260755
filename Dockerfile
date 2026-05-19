@@ -8,7 +8,7 @@ FROM node:20-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
 # Install only production dependencies
-RUN npm ci --only=production
+RUN npm install --omit=dev
 
 # Stage 2: Final image (lean — no devDependencies, no npm cache)
 FROM node:20-alpine AS runner
